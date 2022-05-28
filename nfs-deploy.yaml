@@ -20,7 +20,7 @@ spec:
       serviceAccountName: nfs-client-provisioner
       containers:
         - name: nfs-client-provisioner
-          image: gmoney23/nfs-client-provisioner 
+          image: registry.cn-beijing.aliyuncs.com/mydlq/nfs-subdir-external-provisioner:v4.0.0
           volumeMounts:
             - name: nfs-client-root
               mountPath: /persistentvolumes
@@ -28,11 +28,11 @@ spec:
             - name: PROVISIONER_NAME
               value: nfs-client
             - name: NFS_SERVER
-              value: 192.168.8.6
+              value: 192.168.8.5
             - name: NFS_PATH
               value: /nfs
       volumes:
         - name: nfs-client-root
           nfs:
-            server: 192.168.8.6
+            server: 192.168.8.5
             path: /nfs
